@@ -1,0 +1,4 @@
+services:
+  flagbit.imagesort.provider.field.media:
+    class: Flagbit\ImageSort\Provider\Field\EnhancedMediaFieldProvider
+    tags: [name: pim_enrich.provider.field]

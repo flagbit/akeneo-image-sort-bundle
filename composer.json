@@ -1,0 +1,19 @@
+{
+    "name": "flagbit/akeneo-image-sort-bundle",
+    "description": "A bundle to sort images using drag and drop",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sandro-flagbit",
+            "email": "sandro.schaurer@flagbit.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Flagbit\\Bundle\\ImageSortBundle\\": "src/"
+        }
+    }
+}
