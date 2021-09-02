@@ -1,0 +1,27 @@
+name: 'Composer Analysis'
+
+on:
+  - "push"
+  - "pull_request"
+
+jobs:
+  composer:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        php-versions: ['7.4']
+
+    steps:
+      - uses: 'actions/checkout@v2.0.0'
+
+      - name: 'Setup PHP'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.php-versions }}'
+          extensions: 'intl, xdebug, imagick, apcu'
+
+      - name: 'Validate Composer'
+        run: 'composer validate'
+
+      - name: 'Install PHP Dependencies'
+        run: 'composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress'
