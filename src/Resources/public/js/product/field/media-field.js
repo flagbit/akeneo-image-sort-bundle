@@ -7,7 +7,7 @@
 define([
         'jquery',
         'underscore',
-        'flagbit/media-field',
+        'pimui/js/product/field/media-field',
         '../../../templates/product/field/media.html'
     ], function (
         $,
@@ -26,24 +26,25 @@ define([
                 this.$('.AknMediaField-thumb.file[draggable]')
                     .on('dragstart', this.drag(this));
 
-                if (!window.mediaFieldStore)
+                if (!window.mediaFieldStore) {
                     window.mediaFieldStore = {};
+                }
 
                 window.mediaFieldStore[this.cid] = this;
             },
 
-            drop(self) {
+            drop(targetField) {
                 return event => {
                     event.preventDefault();
                     const eventData = JSON.parse(event.originalEvent.dataTransfer.getData("application/json"));
-                    const other = window.mediaFieldStore[eventData.fieldId];
+                    const sourceField = window.mediaFieldStore[eventData.fieldId];
 
-                    const otherImage = other.getCurrentValue().data;
-                    other.setUploadContextValue(self.getCurrentValue().data);
-                    self.setUploadContextValue(otherImage);
+                    const sourceImage = sourceField.getCurrentValue().data;
+                    sourceField.setUploadContextValue(targetField.getCurrentValue().data);
+                    targetField.setUploadContextValue(sourceImage);
 
-                    self.render();
-                    other.render();
+                    targetField.render();
+                    sourceField.render();
                 };
             },
 
