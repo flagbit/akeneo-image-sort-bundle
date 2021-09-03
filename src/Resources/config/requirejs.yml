@@ -1,4 +1,3 @@
 config:
   paths:
-    flagbit/media-field: pimui/js/product/field/media-field
     pim/media-field: flagbitimagesort/js/product/field/media-field
