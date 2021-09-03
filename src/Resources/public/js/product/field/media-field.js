@@ -39,9 +39,9 @@ define([
                     const eventData = JSON.parse(event.originalEvent.dataTransfer.getData("application/json"));
                     const sourceField = window.mediaFieldStore[eventData.fieldId];
 
-                    const sourceImage = sourceField.getCurrentValue().data;
+                    const sourceData = sourceField.getCurrentValue().data;
                     sourceField.setUploadContextValue(targetField.getCurrentValue().data);
-                    targetField.setUploadContextValue(sourceImage);
+                    targetField.setUploadContextValue(sourceData);
 
                     targetField.render();
                     sourceField.render();
